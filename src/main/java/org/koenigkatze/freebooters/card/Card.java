@@ -8,7 +8,7 @@ import org.koenigkatze.freebooters.card.role.ERoleType;
 
 final class Card implements ICard
 {
-	
+	private final long m_Id;
 	private final String m_title;
 	private final ERoleType m_role;
 	private final EFractionType m_fraction;
@@ -17,23 +17,25 @@ final class Card implements ICard
 	private final IRemark m_remark;
 	
 	Card(
-			final String m_title, 
-			final ERoleType m_role, 
-			final EFractionType m_fraction, 
-			final IAttributeSet m_attributeSet,
-			final IHealthBar m_heathBar, 
-			final IRemark m_remark)
+			final long id,
+			final String title, 
+			final ERoleType role, 
+			final EFractionType fraction, 
+			final IAttributeSet attributeSet,
+			final IHealthBar heathBar, 
+			final IRemark remark)
 	{
 		super();
-		this.m_title = m_title;
-		this.m_role = m_role;
-		this.m_fraction = m_fraction;
-		this.m_attributeSet = m_attributeSet;
-		this.m_heathBar = m_heathBar;
-		this.m_remark = m_remark;
+		this.m_Id = id;
+		this.m_title = title;
+		this.m_role = role;
+		this.m_fraction = fraction;
+		this.m_attributeSet = attributeSet;
+		this.m_heathBar = heathBar;
+		this.m_remark = remark;
 	}
 	
-	public static CardBuilder builder() {
+	static CardBuilder builder() {
 		return new CardBuilder();
 	}
 	
@@ -71,6 +73,42 @@ final class Card implements ICard
 	public IRemark getRemark()
 	{
 		return m_remark;
+	}
+
+	@Override
+	public long getId()
+	{
+		return m_Id;
+	}
+
+	@Override
+	public int compareTo(final ICard otherCard)
+	{
+		return Long.valueOf(m_Id).compareTo(otherCard.getId());
+	}
+
+	@Override
+	public int hashCode()
+	{
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (int) (m_Id ^ (m_Id >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj)
+	{
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Card other = (Card) obj;
+		if (m_Id != other.m_Id)
+			return false;
+		return true;
 	}
 	
 }

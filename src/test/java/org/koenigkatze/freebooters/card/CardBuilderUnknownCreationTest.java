@@ -5,7 +5,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.koenigkatze.freebooters.card.attribute.AttributeSetBuilder;
 import org.koenigkatze.freebooters.card.attribute.IAttributeSet;
-import org.koenigkatze.freebooters.card.healthbar.HealthBarFactory;
 import org.koenigkatze.freebooters.card.healthbar.IHealthBar;
 import org.koenigkatze.freebooters.card.remark.IRemark;
 import org.koenigkatze.freebooters.card.remark.Remark;
@@ -17,7 +16,7 @@ public class CardBuilderUnknownCreationTest
 	
 	@Before
 	public void executedBeforeEachClass() {
-		s_subjectUnderTest = Card.builder().build();
+		s_subjectUnderTest = CardBuilder.getInstance().build();
 	}
 
 	@Test
@@ -44,7 +43,7 @@ public class CardBuilderUnknownCreationTest
 	
 	@Test
 	public void testThatNoHealthBarWillResultInUnknownHealthBar() {
-		final IHealthBar healthBar = HealthBarFactory.createUnknownHealthBar();
+		final IHealthBar healthBar = HealthBarTestDataFactory.createUnknownHealthBar();
 		Assert.assertEquals(s_subjectUnderTest.getHeathBar(), healthBar);
 	}
 	

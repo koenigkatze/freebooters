@@ -6,8 +6,10 @@ import org.koenigkatze.freebooters.card.healthbar.IHealthBar;
 import org.koenigkatze.freebooters.card.remark.IRemark;
 import org.koenigkatze.freebooters.card.role.ERoleType;
 
-public interface ICard
+public interface ICard extends Comparable<ICard>
 {
+	
+	long getId();
 
 	String getTitle();
 

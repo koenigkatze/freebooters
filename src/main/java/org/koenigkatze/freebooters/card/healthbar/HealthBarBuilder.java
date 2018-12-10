@@ -7,11 +7,16 @@ public final class HealthBarBuilder
 {
 	private final List<IHealthBarZone> m_builderHealthBarZones;
 
-	public HealthBarBuilder()
+	HealthBarBuilder()
 	{
 		super();
 		m_builderHealthBarZones = new ArrayList<>();
 	}
+	
+	public static HealthBarBuilder getInstance() {
+		return new HealthBarBuilder();
+	}
+	
 	
 	public void addHealthBarZone(final int value, final int extend) {
 		m_builderHealthBarZones.add(new HealthBarZone(value, extend));

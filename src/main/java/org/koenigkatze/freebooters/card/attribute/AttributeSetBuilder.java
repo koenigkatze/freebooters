@@ -13,7 +13,7 @@ public final class AttributeSetBuilder
 	private IAttribute m_builderArmLeft;
 	private IAttribute m_builderTorso;
 
-	public AttributeSetBuilder()
+	AttributeSetBuilder()
 	{
 		m_builderLegs = new Attribute(ATTRIBUTE_UNKOWN_VALUE, ATTRIBUTE_UNKOWN_VALUE);
 		m_builderHead = new Attribute(ATTRIBUTE_UNKOWN_VALUE, ATTRIBUTE_UNKOWN_VALUE);
