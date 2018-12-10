@@ -8,6 +8,8 @@ import org.koenigkatze.freebooters.card.healthbar.IHealthBar;
 import org.koenigkatze.freebooters.card.remark.IRemark;
 import org.koenigkatze.freebooters.card.remark.Remark;
 import org.koenigkatze.freebooters.card.role.ERoleType;
+import org.koenigkatze.freebooters.testdata.AttributeSetTestDataFactory;
+import org.koenigkatze.freebooters.testdata.HealthBarTestDataFactory;
 
 public class CardBuilder
 {

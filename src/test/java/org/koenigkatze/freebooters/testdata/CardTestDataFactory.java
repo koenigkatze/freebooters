@@ -1,5 +1,8 @@
-package org.koenigkatze.freebooters.card;
+package org.koenigkatze.freebooters.testdata;
 
+import org.koenigkatze.freebooters.card.CardBuilder;
+import org.koenigkatze.freebooters.card.CardConst;
+import org.koenigkatze.freebooters.card.ICard;
 import org.koenigkatze.freebooters.card.remark.Remark;
 
 public class CardTestDataFactory

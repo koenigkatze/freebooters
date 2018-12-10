@@ -1,4 +1,4 @@
-package org.koenigkatze.freebooters.card;
+package org.koenigkatze.freebooters.testdata;
 
 import org.koenigkatze.freebooters.card.healthbar.HealthBarBuilder;
 import org.koenigkatze.freebooters.card.healthbar.IHealthBar;

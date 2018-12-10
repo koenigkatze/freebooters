@@ -7,8 +7,8 @@ import java.util.Optional;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.koenigkatze.freebooters.card.CardTestDataFactory;
 import org.koenigkatze.freebooters.card.ICard;
+import org.koenigkatze.freebooters.testdata.CardTestDataFactory;
 
 public class CardUniqueIdRepositoryTest
 {
@@ -60,6 +60,54 @@ public class CardUniqueIdRepositoryTest
 			} else {
 				fail();
 			}
+	}
+	
+	@Test(expected = IndexOutOfBoundsException.class)
+	public void testThatCallingNextWithNoElementsResultsInException()
+	{
+		s_subjectUnderTest.next();
+	}
+	
+	@Test(expected = IndexOutOfBoundsException.class)
+	public void testThatCallingNextWithNoElementsLeftResultsInException()
+	{
+		s_subjectUnderTest.add(s_unknownCard_1);
+		s_subjectUnderTest.next();
+		s_subjectUnderTest.next();
+	}
+	
+	@Test(expected = IndexOutOfBoundsException.class)
+	public void testThatCallingPreviousWithNoElementsResultsInException()
+	{
+		s_subjectUnderTest.previous();
+	}
+	
+	@Test(expected = IndexOutOfBoundsException.class)
+	public void testThatCallingPreviousWithNoElementsLeftResultsInException()
+	{
+		s_subjectUnderTest.add(s_unknownCard_1);
+		s_subjectUnderTest.next();
+		s_subjectUnderTest.previous();
+	}
+	
+	@Test
+	public void testThatThatCard1ComesFirstIfAddedFirstly()
+	{
+		s_subjectUnderTest.add(s_unknownCard_1);
+		s_subjectUnderTest.add(s_unknownCard_2);
+		final ICard hopefullyCard_1 = s_subjectUnderTest.next();
+		Assert.assertEquals(s_unknownCard_1, hopefullyCard_1);
+		
+	}
+	
+	@Test
+	public void testThatThatCard2FollowsAfterCard1IfAddedInThisOrder()
+	{
+		s_subjectUnderTest.add(s_unknownCard_1);
+		s_subjectUnderTest.add(s_unknownCard_2);
+		s_subjectUnderTest.next();
+		final ICard hopefullyCard_2 = s_subjectUnderTest.next();
+		Assert.assertEquals(s_unknownCard_2, hopefullyCard_2);
 	}
 
 }

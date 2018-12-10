@@ -2,6 +2,7 @@ package org.koenigkatze.freebooters.repository;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -10,11 +11,13 @@ import org.koenigkatze.freebooters.card.ICard;
 public final class UniqueIdCardRepository implements ICardRepository
 {
 	private final List<ICard> m_repository;
+	private int m_cursor;
 
 	public UniqueIdCardRepository()
 	{
 		super();
 		this.m_repository = new ArrayList<>();
+		m_cursor = -1;
 		Collections.sort(m_repository);
 	}
 	
@@ -37,5 +40,42 @@ public final class UniqueIdCardRepository implements ICardRepository
 		}
 		return Optional.empty();
 	}
+
+	@Override
+	public int getCursor()
+	{
+		return m_cursor;
+	}
+
+	@Override
+	public ICard next()
+	{
+		int nextCursorPosition = m_cursor + 1;
+		int repositorySize = m_repository.size();
+		if (nextCursorPosition >= repositorySize) {
+			throw new IndexOutOfBoundsException("Requested cursor size is bigger than the repository. Requested: "+nextCursorPosition+", repository size: "+repositorySize);
+		}
+		m_cursor++;
+		return m_repository.get(nextCursorPosition);
+	}
+
+	@Override
+	public ICard previous()
+	{
+		int nextCursorPosition = m_cursor - 1;
+		if (nextCursorPosition <= 0) {
+			throw new IndexOutOfBoundsException("Requested cursor size is negative or equals zero. Requested: "+nextCursorPosition);
+		}
+		m_cursor--;
+		return m_repository.get(nextCursorPosition);
+	}
+
+	@Override
+	public Iterator<ICard> iterator()
+	{
+		return m_repository.iterator();
+	}
+	
+	
 	
 }
