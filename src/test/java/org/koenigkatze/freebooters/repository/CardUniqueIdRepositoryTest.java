@@ -55,6 +55,7 @@ public class CardUniqueIdRepositoryTest
 			s_subjectUnderTest.add(s_unknownCard_1);
 			s_subjectUnderTest.add(s_unknownCard_2);
 			Optional<ICard> receivedCard = s_subjectUnderTest.getById(s_unknownCard_1.getId());
+			
 			if (receivedCard.isPresent()) {
 				Assert.assertEquals(s_unknownCard_1, receivedCard.get());
 			} else {
@@ -95,6 +96,7 @@ public class CardUniqueIdRepositoryTest
 	{
 		s_subjectUnderTest.add(s_unknownCard_1);
 		s_subjectUnderTest.add(s_unknownCard_2);
+		
 		final ICard hopefullyCard_1 = s_subjectUnderTest.next();
 		Assert.assertEquals(s_unknownCard_1, hopefullyCard_1);
 		
@@ -106,6 +108,7 @@ public class CardUniqueIdRepositoryTest
 		s_subjectUnderTest.add(s_unknownCard_1);
 		s_subjectUnderTest.add(s_unknownCard_2);
 		s_subjectUnderTest.next();
+		
 		final ICard hopefullyCard_2 = s_subjectUnderTest.next();
 		Assert.assertEquals(s_unknownCard_2, hopefullyCard_2);
 	}

@@ -50,8 +50,8 @@ public final class UniqueIdCardRepository implements ICardRepository
 	@Override
 	public ICard next()
 	{
-		int nextCursorPosition = m_cursor + 1;
-		int repositorySize = m_repository.size();
+		final int nextCursorPosition = m_cursor + 1;
+		final int repositorySize = m_repository.size();
 		if (nextCursorPosition >= repositorySize) {
 			throw new IndexOutOfBoundsException("Requested cursor size is bigger than the repository. Requested: "+nextCursorPosition+", repository size: "+repositorySize);
 		}
@@ -62,7 +62,7 @@ public final class UniqueIdCardRepository implements ICardRepository
 	@Override
 	public ICard previous()
 	{
-		int nextCursorPosition = m_cursor - 1;
+		final int nextCursorPosition = m_cursor - 1;
 		if (nextCursorPosition <= 0) {
 			throw new IndexOutOfBoundsException("Requested cursor size is negative or equals zero. Requested: "+nextCursorPosition);
 		}
