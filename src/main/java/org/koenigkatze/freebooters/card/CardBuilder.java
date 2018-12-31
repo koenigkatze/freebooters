@@ -2,14 +2,14 @@ package org.koenigkatze.freebooters.card;
 
 import java.util.Objects;
 
+import org.koenigkatze.freebooters.card.attribute.AttributeSetBuilder;
 import org.koenigkatze.freebooters.card.attribute.IAttributeSet;
 import org.koenigkatze.freebooters.card.fraction.EFractionType;
+import org.koenigkatze.freebooters.card.healthbar.HealthBarBuilder;
 import org.koenigkatze.freebooters.card.healthbar.IHealthBar;
 import org.koenigkatze.freebooters.card.remark.IRemark;
 import org.koenigkatze.freebooters.card.remark.Remark;
 import org.koenigkatze.freebooters.card.role.ERoleType;
-import org.koenigkatze.freebooters.testdata.AttributeSetTestDataFactory;
-import org.koenigkatze.freebooters.testdata.HealthBarTestDataFactory;
 
 public class CardBuilder
 {
@@ -27,8 +27,8 @@ public class CardBuilder
 		m_builderTitle = CardConst.UNKNOWN_TITLE;
 		m_builderRole = ERoleType.UNKNOWN_ROLE;
 		m_builderFraction = EFractionType.UNKNOWN_FRACTION;
-		m_builderAttributeSet = AttributeSetTestDataFactory.createUnknownAttributeSet();
-		m_builderHealthBar = HealthBarTestDataFactory.createUnknownHealthBar();
+		m_builderAttributeSet = AttributeSetBuilder.getInstance().build();
+		m_builderHealthBar = HealthBarBuilder.getInstance().build();
 		m_builderRemark = Remark.createUnknownRemark();
 	}
 	
